@@ -1,15 +1,24 @@
-const express = require('express');
-const app = express()
+const express = require("express");
 
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
+var bodyParser = require("body-parser");
+var app = express();
 
-app.set('view engine', 'ejs')
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
-const appRouter = require('./routes/app');
-const userRouter = require('./routes/users');
+// parse application/json
+app.use(bodyParser.json());
 
-app.use(appRouter)
-app.use('/users/', userRouter)
+app.use(express.static("public"));
 
-app.listen(3000)
+app.set("view engine", "ejs");
+
+const appRouter = require("./routes/app");
+const authRouter = require("./routes/auth");
+const userRouter = require("./routes/users");
+
+app.use(appRouter);
+app.use("/auth/", authRouter);
+app.use("/users/", userRouter);
+
+app.listen(3000);
