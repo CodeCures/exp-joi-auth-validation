@@ -1,4 +1,3 @@
-const { default: userExists } = require('../middlewares/userExists');
 const User = require('../models/user');
 
 const UserController = {
@@ -19,4 +18,4 @@ const UserController = {
     }
 }
 
-module.exports = UserController
+module.exports = UserController;

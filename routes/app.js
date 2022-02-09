@@ -5,4 +5,4 @@ router.get('/', (req, res) => {
     res.render('index', {text: "World!"})
 })
 
-module.exports = router
+module.exports = router;

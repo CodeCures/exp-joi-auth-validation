@@ -14,4 +14,4 @@ router.route('/:id')
 
 router.param('id', userExists.run)
 
-module.exports = router
+module.exports = router;
